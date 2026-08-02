@@ -286,7 +286,7 @@ def is_user_joined(user_id):
 def join_keyboard():
     markup = types.InlineKeyboardMarkup()
     markup.add(types.InlineKeyboardButton("📢 Main Channel", url=CHANNEL_LINK))
-    markup.add(types.InlineKeyboardButton("💡 OTP Group", url=OTP_GROUP_LINK))
+    markup.add(types.InlineKeyboardButton("🔔 OTP Group", url=OTP_GROUP_LINK))
     markup.add(types.InlineKeyboardButton("✅ Verify", callback_data="verify_join"))
     return markup
 
@@ -453,7 +453,7 @@ def process_range(message):
             types.InlineKeyboardButton("📊 Live access", url=LIVEACCESS_LINK),
             types.InlineKeyboardButton("🎯 Range Group", url=RANGE_GROUP_LINK)
         )
-        markup.add(types.InlineKeyboardButton("💡 OTP GROUP", url=OTP_GROUP_LINK))
+        markup.add(types.InlineKeyboardButton("🔔 OTP GROUP", url=OTP_GROUP_LINK))
         
         bot.delete_message(message.chat.id, loading.message_id)
         bot.send_message(message.chat.id, result_text, parse_mode="Markdown", reply_markup=markup)
@@ -499,7 +499,7 @@ def handle_change_number(call):
             types.InlineKeyboardButton("🔍 Live access", url=LIVEACCESS_LINK),
             types.InlineKeyboardButton("🎯 Range Group", url=RANGE_GROUP_LINK)
         )
-        markup.add(types.InlineKeyboardButton("💡 OTP GROUP", url=OTP_GROUP_LINK))
+        markup.add(types.InlineKeyboardButton("🔔 OTP GROUP", url=OTP_GROUP_LINK))
         
         bot.edit_message_text(updated_text, chat_id=call.message.chat.id, message_id=call.message.message_id, parse_mode="Markdown", reply_markup=markup)
     else:
