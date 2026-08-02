@@ -383,18 +383,28 @@ def handle_text(message):
         bot.send_message(message.chat.id, help_text, parse_mode="HTML")
 
 # নাম্বার তুলে আনার মেইন ফাংশন
-def request_number(rid_input):
+def request_number(rid_input, max_retries=10, retry_delay=1):
     headers = {
         "mauthapi": API_KEY, 
         "Content-Type": "application/json",
         "User-Agent": "Mozilla/5.0"
     }
-    try:
-        response = requests.post(API_URL, json={"rid": rid_input}, headers=headers, timeout=12)
-        if response.status_code == 200:
-            return response.json()
-    except Exception as e:
-        print(f"API Error: {e}")
+    for attempt in range(max_retries):
+        try:
+            response = requests.post(API_URL, json={"rid": rid_input}, headers=headers, timeout=12)
+            if response.status_code == 200:
+                data = response.json()
+                if data.get("meta", {}).get("code") == 200:
+                    print(f"✅ চেষ্টা {attempt+1}/{max_retries}-এ সফল হয়েছে")
+                    return data
+            print(f"⚠️ চেষ্টা {attempt+1}/{max_retries} ব্যর্থ (status: {response.status_code})")
+        except Exception as e:
+            print(f"⚠️ চেষ্টা {attempt+1}/{max_retries} এরর: {e}")
+
+        if attempt < max_retries - 1:
+            time.sleep(retry_delay)
+
+    print(f"❌ {max_retries} বার চেষ্টার পরও ব্যর্থ")
     return None
 
 def process_range(message):
