@@ -475,7 +475,7 @@ def _fetch_and_send_number(chat_id, user_id, rid_input, loading_message_id):
             f"✅ **Number Assigned Successfully!**\n\n"
             f"🌐 **Country:** {get_country_flag(num_data.get('no_plus_number', ''))[0]} {num_data.get('country')} ({get_country_flag(num_data.get('no_plus_number', ''))[1]})\n"
             f"🎯 **Range:** `{rid_input}`\n\n"
-            f"🌀 **OTP Forwarded Automatically."
+            f"🌀 **OTP Forwarded Automatically.**"
         )
         markup = types.InlineKeyboardMarkup()
         full_num = num_data.get('full_number') or num_data.get('no_plus_number', 'N/A')
@@ -552,7 +552,7 @@ def _fetch_and_send_changed_number(user_id, rid_input, chat_id, message_id):
             f"✅ **Numbers Changed Successfully!**\n\n"
             f"🌐 **Country:** {get_country_flag(num_data.get('no_plus_number', ''))[0]} {num_data.get('country')} ({get_country_flag(num_data.get('no_plus_number', ''))[1]})\n"
             f"🎯 **Range:** `{rid_input}`\n\n"
-            f"🌀 **OTP Forwarded Automatically."
+            f"🌀 **OTP Forwarded Automatically.**"
         )
         markup = types.InlineKeyboardMarkup()
         full_num = num_data.get('full_number') or num_data.get('no_plus_number', 'N/A')
