@@ -314,7 +314,7 @@ def send_join_prompt(chat_id):
 def send_welcome_menu(chat_id):
     bot.send_message(
         chat_id,
-        "🔥 **WELCOME ** 🔥\n━━━━━━━━━━━━\nSelect Your Service From Below Button",
+        "🔥 **WELCOME** 🔥\n━━━━━━━━━━━━\nSelect Your Service From Below Button",
         parse_mode="Markdown", reply_markup=main_keyboard()
     )
 
