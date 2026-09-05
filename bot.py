@@ -20,7 +20,7 @@ OTP_API_URL = "https://api.2oo9.cloud/MXS47FLFX0U/tness/@public/api/success-otp"
 # 🕒 Change Number কুলডাউন কনফিগারেশন
 user_last_change = {}  # {user_id: timestamp} — কুলডাউন ট্র্যাক করার জন্য
 waiting_users = set()
-CHANGE_COOLDOWN = 6  # সেকেন্ড
+CHANGE_COOLDOWN = 4  # সেকেন্ড
 
 # 🔒 ফোর্স জয়েন কনফিগারেশন
 CHANNEL_ID = -1002969454179          # চ্যানেলের numeric chat_id (বট এই চ্যানেলে admin থাকতে হবে)
@@ -377,7 +377,7 @@ def handle_text(message):
         )
 
 # নাম্বার তুলে আনার মেইন ফাংশন
-def request_number(rid_input, max_retries=10, retry_delay=1):
+def request_number(rid_input, max_retries=10, retry_delay=0.5):
     headers = {
         "mauthapi": API_KEY, 
         "Content-Type": "application/json",
